@@ -21,7 +21,7 @@ require_new_magisk() {
 }
 
 imageless_magisk() {
-  [ $MAGISK_VER_CODE -gt 19300 ]
+  [ $MAGISK_VER_CODE -gt 18100 ]
   return $?
 }
 
