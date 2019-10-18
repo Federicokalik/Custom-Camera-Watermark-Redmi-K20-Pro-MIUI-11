@@ -1,0 +1,5 @@
+# This file will be read by resetprop
+# Example: Change dpi
+# ro.sf.lcd_density=320
+ro.product.model=Mi 9T Pro
+ro.product.vendor.model=Mi 9T Pro
