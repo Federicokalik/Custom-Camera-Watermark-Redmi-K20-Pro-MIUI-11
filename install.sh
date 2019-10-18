@@ -1,3 +1,4 @@
+
 ##########################################################################################
 #
 # Magisk Module Installer Script
@@ -25,7 +26,7 @@
 SKIPMOUNT=false
 
 # Set to true if you need to load system.prop
-PROPFILE=true
+PROPFILE=false
 
 # Set to true if you need post-fs-data script
 POSTFSDATA=false
@@ -122,12 +123,13 @@ REPLACE="
 # Set what you want to display when installing your module
 
 print_modname() {
-  ui_print "*******************************"
-  ui_print "*      Custom Watermark       *"
-  ui_print "*                             *"
-  ui_print "*      by Federicocalik       *"
-  ui_print "*                             *"
-  ui_print "*******************************"
+  ui_print " "
+  ui_print "    *******************************************"
+  ui_print "    *      CCW For Redmi K20 Pro  MIUI 11     *"
+  ui_print "    *******************************************"
+  ui_print "    *            by Federicokalik             *"
+  ui_print "    *******************************************"
+  ui_print " "
 }
 
 # Copy/extract your module files into $MODPATH in on_install.
@@ -140,7 +142,7 @@ on_install() {
   custom_variables
   device_check
   api_check
-  }
+}
 
 # Only some special files require specific permissions
 # This function will be called after on_install is done
@@ -159,29 +161,26 @@ set_permissions() {
 
 # You can add more functions to assist your custom script code
 
-# this function associates the device name to mi 9t pro allowing the installation
+# this function associates the device model to K20 Prp allowing the installation
 custom_variables() {
 if [ -f vendor/build.prop ]; then BUILDS="/system/build.prop vendor/build.prop"; else BUILDS="/system/build.prop"; fi
-  9T=$(grep -E "ro.product.device=raphael|ro.product.device=raphaelin" $BUILDS)
+  K20=$(grep -E "ro.product.device=Rapael|ro.product.device=Rapaelin" $BUILDS)
 }
 
-# this function allows installation just on mi 9t pro
+# this function allows installation just on K20 Pro
 
 device_check() {
-  if [ -n "$9T" ] ; then
+  if [ -n "$K20" ]; then
     break
   else
-    abort "Your device is not a K20 Pro "
+    abort "Your device is not a K20 Pro or you are using a modified build.prop"
   fi
 }
-
-# this function allows installation just on Android 10
 
 api_check() {
   if [ "$API" -ge 29 ]; then
     break
   else
-    abort "Your Android version doesn't compatible with this mod"
+    abort "Your Android version is old for this mod"
   fi
 }
-© 2019 GitHub, Inc.
